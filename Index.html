@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>César Vázquez · Soporte técnico N2 y ciencia de datos</title>
+<meta name="description" content="Ingeniero en Sistemas, maestrante en Ciencia de Datos, soporte técnico bilingüe (inglés C1). Querétaro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6FB;--ink:#0E1B3D;--mute:#4A5677;--line:#D5DBEA;--card:#FFFFFF;--blue:#2F5BFF;--blue-ink:#FFFFFF;--sun:#FFD23F;--ok:#0E8F6B;--term:#0E1B3D;--term-ink:#E8ECFA;--term-mute:#8F9BC4;
+--disp:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1022;--ink:#EAEEFB;--mute:#9AA6CC;--line:#243055;--card:#121A33;--blue:#6D8BFF;--blue-ink:#0A1022;--term:#060B1A;--ok:#3DD6A6}}
+:root[data-theme="dark"]{--bg:#0A1022;--ink:#EAEEFB;--mute:#9AA6CC;--line:#243055;--card:#121A33;--blue:#6D8BFF;--blue-ink:#0A1022;--term:#060B1A;--ok:#3DD6A6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:800 20px var(--disp);text-decoration:none;letter-spacing:-.02em}
+nav a{margin-left:22px;text-decoration:none;color:var(--mute);font-size:15px}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:56px 0 88px}
+h1{font:800 clamp(38px,6.2vw,72px)/1.02 var(--disp);letter-spacing:-.035em;margin:0 0 22px}
+h1 mark{background:linear-gradient(transparent 62%,var(--sun) 62%);color:inherit;padding:0 .08em}
+.lead{color:var(--mute);font-size:19px;max-width:34em;margin:0 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font:500 16px var(--body);text-decoration:none;border:2px solid var(--ink);transition:transform .15s}
+.btn.main{background:var(--blue);border-color:var(--blue);color:var(--blue-ink)}
+.btn:hover{transform:translateY(-2px)}
+.term{background:var(--term);color:var(--term-ink);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(14,27,61,.55);font:400 14px/1.6 var(--mono)}
+.bar{display:flex;gap:8px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.bar button{font:500 12.5px var(--mono);color:var(--term-mute);background:transparent;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;cursor:pointer}
+.bar button[aria-pressed="true"]{background:var(--sun);color:#0E1B3D;border-color:var(--sun)}
+.sql{padding:16px 18px 6px;min-height:58px;color:#9FB4FF}
+.sql i{font-style:normal;color:var(--sun)}
+.caret{display:inline-block;width:8px;height:15px;background:var(--sun);vertical-align:-2px;animation:b 1s steps(2) infinite}
+@keyframes b{50%{opacity:0}}
+.res{padding:0 18px 18px;overflow-x:auto}
+.res table{border-collapse:collapse;width:100%;min-width:420px}
+.res th{text-align:left;color:var(--term-mute);font-weight:400;padding:6px 14px 6px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.res td{padding:6px 14px 6px 0;vertical-align:top}
+.res .ok{color:#5CE3B6}
+.rows{color:var(--term-mute);padding:0 18px 16px;font-size:12.5px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(28px,4vw,42px)/1.1 var(--disp);letter-spacing:-.03em;margin:0 0 28px;max-width:20em}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 40px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.fact b{display:block;font:800 44px/1 var(--disp);letter-spacing:-.04em;margin-bottom:8px}
+.fact span{color:var(--mute);font-size:15px}
+.job{display:grid;grid-template-columns:200px 1fr;gap:32px}
+.job h3,.proj h3{font:800 22px/1.2 var(--disp);margin:0 0 4px;letter-spacing:-.02em}
+.when{color:var(--mute);font-size:15px}
+.job ul{margin:14px 0 0;padding-left:20px;max-width:46em}
+.job li{margin-bottom:10px}
+.projs{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+.proj p{color:var(--mute);margin:10px 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{font:500 13px var(--mono);border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg)}
+.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px}
+.stack h3{font:800 18px var(--disp);margin:0 0 10px}
+.edu{display:grid;gap:14px;max-width:44em}
+.edu div{border-left:4px solid var(--blue);padding:2px 0 2px 18px}
+.edu b{font:800 19px var(--disp);display:block}
+.edu span{color:var(--mute);font-size:15px}
+.cta{background:var(--ink);color:var(--bg);border-radius:24px;padding:56px 40px;text-align:left}
+.cta h2{color:var(--bg);margin-bottom:14px}
+.cta p{color:var(--line);margin:0 0 26px;max-width:36em}
+.cta .btn{border-color:var(--bg);color:var(--bg)}
+.cta .btn.main{background:var(--sun);border-color:var(--sun);color:#0E1B3D}
+footer{padding:36px 0 48px;color:var(--mute);font-size:14px}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:24px}.facts,.projs,.stack{grid-template-columns:1fr}.job{grid-template-columns:1fr;gap:12px}nav a:not(:last-child){display:none}.cta{padding:36px 24px}}
+@media (prefers-reduced-motion:reduce){.caret{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#inicio">César Vázquez</a>
+  <nav aria-label="Principal"><a href="#experiencia">Experiencia</a><a href="#proyectos">Proyectos</a><a href="#stack">Herramientas</a><a href="#contacto">Contacto</a></nav>
+</header>
+
+<main id="inicio">
+<div class="hero">
+  <div>
+    <h1>Soporte técnico N2 que ahora trabaja con <mark>datos</mark>.</h1>
+    <p class="lead">Soy ingeniero en Sistemas Computacionales y cursando la Maestría en Ciencia de Datos. Dos años resolviendo incidencias de banca digital en español e inglés (C1). Vivo en Querétaro y busco puestos de datos o soporte, presenciales aquí o remotos.</p>
+    <div class="btns">
+      <a class="btn main" href="mailto:cesarmarcelovaz@gmail.com">Escríbeme</a>
+      <a class="btn" href="#experiencia">Ver mi experiencia</a>
+    </div>
+  </div>
+  <div class="term" role="region" aria-label="Consulta interactiva sobre César">
+    <div class="bar" id="tabs"></div>
+    <div class="sql" id="sql" aria-live="polite"></div>
+    <div class="res" id="res"></div>
+    <div class="rows" id="rows"></div>
+  </div>
+</div>
+
+<section id="experiencia">
+  <h2>Dos años atendiendo a clientes reales en banca digital</h2>
+  <div class="facts">
+    <div class="fact"><b>~100</b><span>clientes atendidos al día, con diagnóstico y resolución de incidencias técnicas</span></div>
+    <div class="fact"><b>10%</b><span>de los casos eran internacionales o bilingües, y todos pasaban por mí</span></div>
+    <div class="fact"><b>C1</b><span>inglés avanzado, técnico y conversacional</span></div>
+  </div>
+  <div class="job">
+    <div><h3>BBVA</h3><div class="when">Abril 2024 – Agosto 2026<br>San Luis Potosí</div></div>
+    <div>
+      <h3>Asesor Digital / Soporte Técnico N2</h3>
+      <ul>
+        <li>Diagnostiqué y resolví incidencias en Banca Digital, app móvil, bases de datos internas y portales corporativos.</li>
+        <li>Fui la referencia técnica exclusiva para clientes bilingües y casos internacionales.</li>
+        <li>Automaticé consultas y reportes con Excel avanzado y Visual Basic (VBA) para dar seguimiento a la satisfacción del cliente (CSAT) y a objetivos comerciales.</li>
+        <li>Cumplí de forma constante las métricas de calidad y los acuerdos de nivel de servicio (SLA) en un entorno financiero exigente.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <h2>Proyectos que construí</h2>
+  <div class="projs">
+    <article class="proj">
+      <h3>Sistema de gestión y base de datos comercial</h3>
+      <p>Diseñé una base de datos relacional para controlar inventarios, transacciones y ventas, con procedimientos almacenados y lógica orientada a objetos en C#.</p>
+      <ul class="tags"><li>SQL</li><li>MySQL</li><li>SQL Server</li><li>C#</li></ul>
+    </article>
+    <article class="proj">
+      <h3>Sitio web y plan de proyecto tecnológico</h3>
+      <p>Construí un sitio web funcional y armé el plan del proyecto, con análisis de viabilidad técnica e integración de sistemas.</p>
+      <ul class="tags"><li>Desarrollo web</li><li>Planeación</li><li>Integración</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="stack">
+  <h2>Con qué trabajo</h2>
+  <div class="stack">
+    <div><h3>Datos y programación</h3><ul class="tags"><li>Python</li><li>SQL</li><li>C#</li><li>C++</li><li>Java</li><li>MySQL</li><li>SQL Server</li><li>Excel + VBA</li><li>Git / GitHub</li></ul></div>
+    <div><h3>Redes y soporte</h3><ul class="tags"><li>TCP/IP</li><li>Modelo OSI</li><li>DNS</li><li>DHCP</li><li>Wireshark</li><li>Cisco Packet Tracer</li><li>Diagnóstico N1/N2</li></ul></div>
+    <div><h3>Sistemas</h3><ul class="tags"><li>Windows Server</li><li>Ubuntu / Linux</li><li>Windows 10/11</li></ul></div>
+    <div><h3>Cómo trabajo</h3><ul class="tags"><li>Comunicación clara</li><li>Trabajo bajo presión</li><li>Aprendo rápido</li><li>Orientado a resultados</li></ul></div>
+  </div>
+</section>
+
+<section id="formacion">
+  <h2>Formación</h2>
+  <div class="edu">
+    <div><b>Maestría en Ciencia de Datos</b><span>Universidad Cuauhtémoc, Querétaro · en curso, 2026</span></div>
+    <div><b>Ingeniería en Sistemas Computacionales</b><span>Universidad Cuauhtémoc, Querétaro · titulado con mención por promedio</span></div>
+    <div><b>Diplomado de Especialización en Redes y Telecomunicaciones</b><span>Universidad Cuauhtémoc, Querétaro</span></div>
+  </div>
+</section>
+
+<section id="contacto" style="border-top:0">
+  <div class="cta">
+    <h2>¿Tienes una vacante de datos o soporte técnico bilingüe?</h2>
+    <p>Escríbeme o llámame. Respondo rápido y puedo empezar pronto.</p>
+    <div class="btns">
+      <a class="btn main" href="mailto:cesarmarcelovaz@gmail.com">cesarmarcelovaz@gmail.com</a>
+      <a class="btn" href="tel:+524428749477">442 874 94 77</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>César Marcelo Vázquez Arriaga · Loma Dorada, Querétaro, Qro.</footer>
+</div>
+
+<script>
+(function(){
+var Q=[
+{k:"experiencia",sql:"SELECT empresa, puesto, periodo FROM experiencia;",cols:["empresa","puesto","periodo"],rows:[["BBVA","Asesor Digital / Soporte N2","2024-04 a 2026-08"]]},
+{k:"habilidades",sql:"SELECT lenguaje FROM habilidades ORDER BY nivel DESC;",cols:["lenguaje","uso"],rows:[["Python","análisis de datos"],["SQL","consultas, JOINs, procedimientos"],["C#","proyecto de base de datos"],["C++ / Java","programación"]]},
+{k:"idiomas",sql:"SELECT idioma, nivel FROM idiomas;",cols:["idioma","nivel"],rows:[["Español","nativo"],["Inglés","C1 (avanzado)"]]},
+{k:"estudios",sql:"SELECT grado, estado FROM formacion;",cols:["grado","estado"],rows:[["Maestría en Ciencia de Datos","en curso"],["Ing. en Sistemas Computacionales","titulado, con mención"],["Diplomado en Redes y Telecom.","concluido"]]},
+{k:"disponible",sql:"SELECT * FROM disponibilidad WHERE estado = 'abierto';",cols:["modalidad","lugar"],rows:[["presencial","Querétaro"],["remoto","cualquier lugar (inglés avanzado)"]]}
+];
+var tabs=document.getElementById("tabs"),sql=document.getElementById("sql"),res=document.getElementById("res"),rows=document.getElementById("rows");
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches,timer=null;
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function kw(s){return esc(s).replace(/\b(SELECT|FROM|WHERE|ORDER BY|DESC)\b/g,"<i>$1</i>")}
+function show(q){
+ res.innerHTML="";rows.textContent="";
+ var h="<table><thead><tr>"+q.cols.map(function(c){return"<th>"+esc(c)+"</th>"}).join("")+"</tr></thead><tbody>"+
+ q.rows.map(function(r){return"<tr>"+r.map(function(c,i){return"<td"+(i===0?' class="ok"':"")+">"+esc(c)+"</td>"}).join("")+"</tr>"}).join("")+"</tbody></table>";
+ res.innerHTML=h;rows.textContent=q.rows.length+(q.rows.length===1?" fila":" filas");
+}
+function run(i){
+ clearInterval(timer);
+ [].forEach.call(tabs.children,function(b,j){b.setAttribute("aria-pressed",j===i?"true":"false")});
+ var q=Q[i];res.innerHTML="";rows.textContent="";
+ if(reduce){sql.innerHTML=kw(q.sql);show(q);return}
+ var n=0;
+ timer=setInterval(function(){
+  n+=2;sql.innerHTML=kw(q.sql.slice(0,n))+'<span class="caret"></span>';
+  if(n>=q.sql.length){clearInterval(timer);sql.innerHTML=kw(q.sql);show(q)}
+ },16);
+}
+Q.forEach(function(q,i){var b=document.createElement("button");b.type="button";b.textContent=q.k;b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){run(i)});tabs.appendChild(b)});
+run(0);
+})();
+</script>
+</body>
+</html>
